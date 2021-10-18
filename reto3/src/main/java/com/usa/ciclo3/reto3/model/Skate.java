@@ -18,8 +18,10 @@ public class Skate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String brand;
     private Integer year;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
@@ -42,6 +44,14 @@ public class Skate implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -56,6 +66,14 @@ public class Skate implements Serializable {
 
     public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getCategory() {
