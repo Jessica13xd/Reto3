@@ -1,5 +1,6 @@
 package com.usa.ciclo3.reto3.services;
 
+import com.usa.ciclo3.reto3.model.Client;
 import com.usa.ciclo3.reto3.model.Message;
 import com.usa.ciclo3.reto3.repository.messageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,26 @@ public class MessageService {
                 return m;
             }
         }
+    }
+
+    public Message update(Message m) {
+        if (m.getIdMessage() != null) {
+            Optional<Message> ms = messageRepository.getMessage(m.getIdMessage());
+            if (!ms.isEmpty()) {
+                if(m.getMessageText()!=null){
+                    ms.get().setMessageText(m.getMessageText());
+                }
+                return messageRepository.save(ms.get());
+            }
+        }
+        return m;
+    }
+
+    public boolean deleteMessage(int idMessage){
+        boolean dm= getMessage(idMessage).map(message -> {
+            messageRepository.delete(message);
+            return true;
+        }).orElse(false);
+        return dm;
     }
 }

@@ -1,5 +1,6 @@
 package com.usa.ciclo3.reto3.services;
 
+import com.usa.ciclo3.reto3.model.Reservation;
 import com.usa.ciclo3.reto3.model.Score;
 import com.usa.ciclo3.reto3.repository.scoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,26 @@ public class ScoreService {
                 return sr;
             }
         }
+    }
+
+    public Score update(Score sr) {
+        if (sr.getIdScore() != null) {
+            Optional<Score> sce = scoreRepository.getScore(sr.getIdScore());
+            if (!sce.isEmpty()) {
+                if (sr.getStars()!=null){
+                    sce.get().setStars(sr.getStars());
+                }
+                return scoreRepository.save(sce.get());
+            }
+        }
+        return sr;
+    }
+
+    public boolean deleteScore(int idScore){
+        boolean dsr= getScore(idScore).map(score -> {
+            scoreRepository.delete(score);
+            return true;
+        }).orElse(false);
+        return dsr;
     }
 }

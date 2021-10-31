@@ -1,5 +1,6 @@
 package com.usa.ciclo3.reto3.controllers;
 
+import com.usa.ciclo3.reto3.model.Score;
 import com.usa.ciclo3.reto3.model.Skate;
 import com.usa.ciclo3.reto3.services.SkateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class SkateController {
     @ResponseStatus(HttpStatus.CREATED)
     public Skate save(@RequestBody Skate s){
         return skateService.save(s);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Skate update(@RequestBody Skate s){
+        return skateService.update(s);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteScore(@PathVariable("id") int id){
+        return skateService.deleteSkate(id);
     }
 }

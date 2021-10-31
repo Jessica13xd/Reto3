@@ -1,5 +1,6 @@
 package com.usa.ciclo3.reto3.controllers;
 
+import com.usa.ciclo3.reto3.model.Client;
 import com.usa.ciclo3.reto3.model.Message;
 import com.usa.ciclo3.reto3.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class MessageController {
         return messageService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{idMessage}")
     public Optional<Message> getMessage(@PathVariable("idMessage") int idMessage){
         return messageService.getMessage(idMessage);
     }
@@ -31,5 +32,17 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody Message m){
         return messageService.save(m);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message update(@RequestBody Message m){
+        return messageService.update(m);
+    }
+
+    @DeleteMapping("/{idMessage}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteMessage(@PathVariable("idMessage") int idMessage){
+        return messageService.deleteMessage(idMessage);
     }
 }

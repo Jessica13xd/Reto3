@@ -1,5 +1,6 @@
 package com.usa.ciclo3.reto3.controllers;
 
+import com.usa.ciclo3.reto3.model.Category;
 import com.usa.ciclo3.reto3.model.Client;
 import com.usa.ciclo3.reto3.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ClientController {
         return clientService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{idClient}")
     public Optional<Client> getClient(@PathVariable("idClient") int idClient){
         return clientService.getClient(idClient);
     }
@@ -31,5 +32,17 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody Client c){
         return clientService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client update(@RequestBody Client c){
+        return clientService.update(c);
+    }
+
+    @DeleteMapping("/{idClient}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteClient(@PathVariable("idClient") int idClient){
+        return clientService.deleteClient(idClient);
     }
 }
