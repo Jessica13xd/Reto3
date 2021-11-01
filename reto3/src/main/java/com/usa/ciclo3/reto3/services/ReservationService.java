@@ -37,7 +37,10 @@ public class ReservationService {
             }
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     public Reservation update(Reservation r) {
         if (r.getIdReservation() != null) {
             Optional<Reservation> rs = reservationRepository.getReservation(r.getIdReservation());

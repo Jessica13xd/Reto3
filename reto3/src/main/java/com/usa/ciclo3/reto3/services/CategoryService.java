@@ -33,7 +33,10 @@ public class CategoryService {
             }
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     public Category update(Category ct) {
         if (ct.getId() != null) {
             Optional<Category> g = categoryRepository.getCategory(ct.getId());
@@ -57,5 +60,8 @@ public class CategoryService {
         }).orElse(false);
         return d;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 }

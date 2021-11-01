@@ -32,6 +32,10 @@ public class ClientService {
             }
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     public Client update(Client c) {
         if (c.getIdClient() != null) {
             Optional<Client> e = clientRepository.getClient(c.getIdClient());

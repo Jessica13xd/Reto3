@@ -32,7 +32,10 @@ public class MessageService {
             }
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     public Message update(Message m) {
         if (m.getIdMessage() != null) {
             Optional<Message> ms = messageRepository.getMessage(m.getIdMessage());

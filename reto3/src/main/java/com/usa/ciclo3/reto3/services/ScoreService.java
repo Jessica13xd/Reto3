@@ -32,7 +32,10 @@ public class ScoreService {
             }
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     public Score update(Score sr) {
         if (sr.getIdScore() != null) {
             Optional<Score> sce = scoreRepository.getScore(sr.getIdScore());
