@@ -31,4 +31,24 @@ public class ScoreService {
             }
         }
     }
+    public Score update(Score sr) {
+        if (sr.getIdScore() != null) {
+            Optional<Score> sce = scoreRepository.getScore(sr.getIdScore());
+            if (!sce.isEmpty()) {
+                if (sr.getStars()!=null){
+                    sce.get().setStars(sr.getStars());
+                }
+                return scoreRepository.save(sce.get());
+            }
+        }
+        return sr;
+    }
+
+    public boolean deleteScore(int idScore){
+        boolean dsr= getScore(idScore).map(score -> {
+            scoreRepository.delete(score);
+            return true;
+        }).orElse(false);
+        return dsr;
+    }
 }
